@@ -1,2 +1,2 @@
 # zaleph
-Analysis of the Z line shape at LEP
+Analysis of the Z line shape at LEP.
