@@ -15,6 +15,14 @@ mc_filenames = [
         #"zdec_ggh",
         ]
 
+data_energies = [89.5, 91.25, 93.00]
+
+data_filenames = [
+        "zdec_da8950",
+        "zdec_da9125_small",
+        "zdec_da9300",
+        ]
+
 # A dict of event variables with branch name, description,
 # histogram bin number, histogram limits, and log-scale flag.
 # Comment out the variables which you don't want to process.
@@ -30,7 +38,7 @@ event_variables = {
         "Egood":   ("sum of energy (GeV) of good charged tracks",100,  0.,  205., True ),
         "Nch":     ("Number of all charged tracks",              102,  0.,  102., True ),
         "Ech":     ("Energy sum (GeV) of all charged tracks",    100,  0.,  200., True ),
-        #("pcha"
+        "pcha":    ("Track momentum (px,py,pz) (GeV/c)",         100,  0.,  200., True ),
         #("Qcha"
         #("D0"
         #("Z0"
@@ -39,7 +47,7 @@ event_variables = {
         "Nefl":    ("Number of energy flow objects",             85,    0.,  85., True ),
         #("pefl"
         #("Typeefl"
-        #("Nec"
+        "Nec":     (" Number of all objects in ECAL",           20,   0,   20., True ),
         "Eec":     ("Energy sum (GeV) of all objects in ECAL",  100,   0.,  130., True ),
         "Eecal":   ("Energy of the ECAL objects (GeV)",         100,   0.,  130., True ),
         #("Tecal", "Theta of the ECAL object (radians)"
@@ -61,11 +69,11 @@ sigma_leptons = {"ee": 1.219, "mm": 1.481, "tt": 1.478}
 
 # Theoretical hadronic cross sections in nb for different energies
 # no QED corrections for initial and final state radiation
-sigma_hard_noqed = {"89.44": 13.56, "91.29": 41.42, "92.97": 13.38}
+sigma_hadr_noqed = {"89.44": 13.56, "91.29": 41.42, "92.97": 13.38}
 
 # Theoretical hadronic cross sections in nb for different energies
 # with initial and final state radiation
-sigma_hard_qed = {"89.44": 9.69, "91.29": 30.74, "92.97": 14.06}
+sigma_hadr_qed = {"89.44": 9.69, "91.29": 30.74, "92.97": 14.06}
 
 # A more useful dictionary for the crosssections at MC-energy (91.2 GeV,
 # which we assume to be the same as 91.29 GeV)

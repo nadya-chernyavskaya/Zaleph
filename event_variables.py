@@ -10,6 +10,9 @@ mc_files = [TFile(data_dir + x + ".root") for x in mc_filenames]
 mc_trees = [f.Get('h100') for f in mc_files]
 mc_n = len(mc_trees)
 
+cut = "Nefl<=14&&Egood<=63.5&&Eec<=70.2"
+#cut = ""
+
 for variable_name, variable_info in event_variables.iteritems():
     variable_caption, n_bins, x_min, x_max, logscale = variable_info
     c = TCanvas("c", variable_name, 600, 400)
@@ -23,7 +26,10 @@ for variable_name, variable_info in event_variables.iteritems():
 
     for i in range(mc_n):
         hists.append(TH1D("h{}".format(i),variable_caption,n_bins,x_min,x_max))
-        mc_trees[i].Draw("{0}>>h{1}".format(variable_name, i))
+        if variable_name == "pcha":
+            mc_trees[i].Draw("TMath::Sqrt({0}[][0]**2 + {0}[][1]**2)>>h{1}".format(variable_name, i), cut)
+        else:
+            mc_trees[i].Draw("{0}>>h{1}".format(variable_name, i), cut)
         # Number of events assuming the experimental luminosity
         N = luminosity["91.29"] * sigma[mc_filenames[i]]
         # N = 1
