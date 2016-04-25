@@ -33,7 +33,7 @@ event_variables = {
         #("Clas",    "preclassification of event",                100, 0  , 2.2e6, False)],
         "Ngood":   ("Number of good charged tracks",              50,  0.,   50., True ),
         #("Elep",    "centre-of-mass energy (GeV)",               100, 91.,  92.3, True ),
-        "Cthr":    ("Cosine of the thrust axis polar angle",     100, -1.,    1., False),
+        "Cthr":    ("Cosine of the thrust axis polar angle",     100, -1.,    1., True),
         "Thruv":   ("Thrustvalue",                               100,  0.,    1., True ),
         "Egood":   ("sum of energy (GeV) of good charged tracks",100,  0.,  205., True ),
         "Nch":     ("Number of all charged tracks",              102,  0.,  102., True ),
@@ -42,7 +42,7 @@ event_variables = {
         #("Qcha"
         #("D0"
         #("Z0"
-        #("Nhits",
+        "Nhits":   ("Number of hits in the tracker",             24,    0.,  24., True ),
         "Nplanes": ("Number of hits in the last planes of HCAL", 12,    0.,  12., False),
         "Nefl":    ("Number of energy flow objects",             85,    0.,  85., True ),
         #("pefl"
@@ -65,19 +65,19 @@ event_variables = {
 luminosity = {"89.44": 8121.41, "91.29": 3553.53, "92.97": 9372.47}
 
 # Theoretical crosssections for leptons in nb
-sigma_leptons = {"ee": 1.219, "mm": 1.481, "tt": 1.478}
+xsec = {"ee": 1.219, "mm": 1.481, "tt": 1.478}
 
 # Theoretical hadronic cross sections in nb for different energies
 # no QED corrections for initial and final state radiation
-sigma_hadr_noqed = {"89.44": 13.56, "91.29": 41.42, "92.97": 13.38}
+xsec = {"89.44": 13.56, "91.29": 41.42, "92.97": 13.38}
 
 # Theoretical hadronic cross sections in nb for different energies
 # with initial and final state radiation
-sigma_hadr_qed = {"89.44": 9.69, "91.29": 30.74, "92.97": 14.06}
+xsec = {"89.44": 9.69, "91.29": 30.74, "92.97": 14.06}
 
 # A more useful dictionary for the crosssections at MC-energy (91.2 GeV,
 # which we assume to be the same as 91.29 GeV)
-sigma = {"zdec_bhab": 1.219, "zdec_hadr": 30.74, "zdec_muon": 1.481, "zdec_taus": 1.478}
+xsec = {"zdec_bhab": 1.219, "zdec_hadr": 30.74, "zdec_muon": 1.481, "zdec_taus": 1.478}
 
 # Gamma-gamma background within acceptance
 gg_bg = 0.078

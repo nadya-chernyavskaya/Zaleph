@@ -10,8 +10,8 @@ mc_files = [TFile(data_dir + x + ".root") for x in mc_filenames]
 mc_trees = [f.Get('h100') for f in mc_files]
 mc_n = len(mc_trees)
 
-cut = "Nefl<=14&&Egood<=63.5&&Eec<=70.2"
-#cut = ""
+cut = ""
+cut = "Nefl<=14&&Nhits>3&&Ech<=62"
 
 for variable_name, variable_info in event_variables.iteritems():
     variable_caption, n_bins, x_min, x_max, logscale = variable_info
@@ -31,8 +31,8 @@ for variable_name, variable_info in event_variables.iteritems():
         else:
             mc_trees[i].Draw("{0}>>h{1}".format(variable_name, i), cut)
         # Number of events assuming the experimental luminosity
-        N = luminosity["91.29"] * sigma[mc_filenames[i]]
-        # N = 1
+        N = luminosity["91.29"] * xsec[mc_filenames[i]]
+        #N = 1
         hists[-1].Scale(1/float(mc_trees[i].GetEntries()) * N);
         hists[-1].SetLineColor(i+1)
 
